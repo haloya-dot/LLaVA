@@ -49,10 +49,6 @@ def rank0_print(*args):
 from packaging import version
 IS_TOKENIZER_GREATER_THAN_0_14 = version.parse(tokenizers.__version__) >= version.parse('0.14')
 
-class ClearCacheAfterEval(TrainerCallback):
-    def on_evaluate(self, args, state, control, **kwargs):
-        torch.cuda.empty_cache()
-        # print("Cleared cache after evaluation.")
 
 @dataclass
 class ModelArguments:
